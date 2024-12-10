@@ -6,12 +6,18 @@ import {
   input,
   Output,
   EventEmitter,
+  output,
 } from '@angular/core';
 
 import { DUMMY_USERS } from '../dumy_user';
 
 let randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
+interface User {
+  avatar: string;
+  name: string;
+  id: string;
+}
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -47,19 +53,22 @@ export class UserComponent {
   /* - - - - - - - - - - - - - - - - - -  
  // Classic input
  - - - - - - - - - - - - - - - - - - */
-  @Input({ required: true }) avatar: string = '';
+  // @Input({ required: true }) avatar: string | undefined = '';
 
-  @Input({ required: true }) name: string = '';
+  // @Input({ required: true }) name: string | undefined = '';
 
-  @Input({ required: true }) id: string = '';
+  // @Input({ required: true }) id: string | undefined = '';
 
-  @Output() select = new EventEmitter();
+  @Input({ required: true }) user!: User;
+
+  @Output() select = new EventEmitter<string>();
+  // select = output<string>();
 
   get imagePath() {
-    return `assets/users/` + this.avatar;
+    return `assets/users/` + this.user.avatar;
   }
 
-  onSelectUser(user: any) {
-    this.select.emit(this.id);
+  onSelectUser() {
+    this.select.emit(this.user.id);
   }
 }
