@@ -13,4 +13,8 @@ import { NgFor } from '@angular/common';
 })
 export class AppComponent {
   protected users = DUMMY_USERS;
+
+  onUserReceived(id: string) {
+    console.log(id);
+  }
 }

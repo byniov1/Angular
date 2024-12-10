@@ -3,7 +3,12 @@
 <main>
   <ul *ngFor="let user of users" id="users">
     <li>
-      <app-user [name]="user.name" [avatar]="user.avatar" />
+      <app-user
+        [name]="user.name"
+        [avatar]="user.avatar"
+        [id]="user.id"
+        (select)="onUserReceived($event)"
+      />
     </li>
   </ul>
 </main>

@@ -1,14 +1,14 @@
 <div>
-  <!-- <button (click)="onSelectUser()"> -->
-  <button>
+  <!-- <button> -->
+  <button (click)="onSelectUser($event)">
     <!-- <img [src]="imagePath" [alt]="selectedUser.name" /> -->
     <!-- <img [src]="imagePath()" [alt]="selectedUser().name" /> -->
-    <!-- <img [src]="imagePath" [alt]="name" /> -->
-    <img [src]="imagePath()" [alt]="name()" />
+    <!-- <img [src]="imagePath()" [alt]="name()" /> -->
+    <img [src]="imagePath" [alt]="name" />
 
     <!-- <span>{{ selectedUser.name }}</span> -->
     <!-- <span>{{ selectedUser().name }}</span> -->
-    <!-- <span>{{ name }}</span> -->
-    <span>{{ name() }}</span>
+    <!-- <span>{{ name() }}</span> -->
+    <span>{{ name }}</span>
   </button>
 </div>
