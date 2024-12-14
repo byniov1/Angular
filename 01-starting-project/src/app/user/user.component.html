@@ -1,6 +1,10 @@
 <div>
   <!-- <button> -->
-  <button (click)="onSelectUser()">
+  <button 
+  [class.active]="selected"
+  (click)="onSelectUser()"
+  
+  >
     <!-- <img [src]="imagePath" [alt]="selectedUser.name" /> -->
     <!-- <img [src]="imagePath()" [alt]="selectedUser().name" /> -->
     <!-- <img [src]="imagePath()" [alt]="name()" /> -->
