@@ -1,8 +1,11 @@
 @if(showAddTaskForm){
   <section id = "newTasks">
-    <app-new-tasks />
+    <app-new-tasks 
+      (addNewTask)="onAddTask($event)"
+      (cancelClicked)="onCancelAddTask()"
+  />
   </section>
-}
+} 
 
 <section id="tasks">
   <header>
@@ -10,7 +13,7 @@
     <menu>
       <button (click)="onStartAddTask()">Add Task</button>
     </menu>
-  </header>
+  </header> 
 
   <ul>
     @for (task of selectedUserTasks; track task.id) {
