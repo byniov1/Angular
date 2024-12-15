@@ -1,7 +1,7 @@
 @if(showAddTaskForm){
   <section id = "newTasks">
     <app-new-tasks 
-      (addNewTask)="onAddTask($event)"
+      [userId]="userId"
       (cancelClicked)="onCancelAddTask()"
   />
   </section>
