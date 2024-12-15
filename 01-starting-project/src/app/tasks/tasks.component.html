@@ -2,7 +2,7 @@
   <section id = "newTasks">
     <app-new-tasks 
       [userId]="userId"
-      (cancelClicked)="onCancelAddTask()"
+      (closeForm)="onManageForm('close')"
   />
   </section>
 } 
@@ -11,7 +11,7 @@
   <header>
     <h2>{{ name }}'s Tasks</h2>
     <menu>
-      <button (click)="onStartAddTask()">Add Task</button>
+      <button (click)="onManageForm('open')">Add Task</button>
     </menu>
   </header> 
 
@@ -19,10 +19,7 @@
     @for (task of selectedUserTasks; track task.id) {
       <li>
         <app-card>
-          <app-task 
-            [task] = "task"
-            (complete)="onCompleteSelected($event)"  
-          />
+          <app-task [task] = "task" />
         </app-card>
       </li>
     }

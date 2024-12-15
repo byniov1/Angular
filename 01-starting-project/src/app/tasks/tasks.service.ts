@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 @Injectable({providedIn: 'root'})
 
 export class TaskService {
-  private dummyTasks = [
+  private tasks = [
     {
       id: 't1',
       userId: 'u1',
@@ -30,11 +30,7 @@ export class TaskService {
       dueDate: '2024-06-15',
     },
   ]
-    
-  get tasks(){
-    return this.dummyTasks;
-  }
-  
+      
   getUserTask(userId: string){
     return this.tasks.filter((task) => task.userId === userId)
   }
@@ -50,8 +46,7 @@ export class TaskService {
   }
 
   onRemoveTask(id: string){
-    console.log(id);
-    return this.dummyTasks.filter((task) => task.id !== id)
+    this.tasks = this.tasks.filter((task) => task.id !== id);
   }
 
 }
