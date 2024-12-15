@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
-import { dummyTasks, NewTaskData } from './tasks.model';
+import { NewTaskData } from './tasks.model';
 import { NewTasksComponent } from "./new-tasks/new-tasks.component";
 import { CardComponent } from "../common/card/card.component";
+import { TaskService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -16,18 +17,28 @@ export class TasksComponent {
 
   @Input() name?: string | undefined;
 
+  // private taskService = inject(TaskService);
+
   protected showAddTaskForm?: boolean = false;
 
-  protected tasks = dummyTasks;
+  protected tasks;
 
-  get selectedUserTasks(){
-    return this.tasks.filter((task) => task.userId == this.userId)
+  constructor(private taskService: TaskService){
+    this.tasks = this.taskService.tasks
+  }
+
+  get selectedUserTasks(){  
+    return this.taskService.getUserTask(this.userId);
   }
 
   onCompleteSelected(id: string){
-    // ...
-    this.tasks = this.tasks.filter((task) => task.id !== id);
-    console.log(id);
+    this.taskService.onRemoveTask(id)
+  }
+
+  onAddTask(taskData: NewTaskData){
+    this.taskService.onAddTask(taskData, this.userId);
+
+    this.showAddTaskForm = false;
   }
 
   onStartAddTask() {
@@ -35,18 +46,6 @@ export class TasksComponent {
   }
 
   onCancelAddTask(){
-    this.showAddTaskForm = false;
-  }
-
-  onAddTask(taskData: NewTaskData){
-    this.tasks.push({
-      id: new Date().getTime().toString(),
-      userId: this.userId,
-      title: taskData.title,
-      summary: taskData.summary,
-      dueDate: taskData.date,
-    })
-
     this.showAddTaskForm = false;
   }
 } 
