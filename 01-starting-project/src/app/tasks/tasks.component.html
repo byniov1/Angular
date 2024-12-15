@@ -18,10 +18,12 @@
   <ul>
     @for (task of selectedUserTasks; track task.id) {
       <li>
-        <app-task 
-          [task] = "task"
-          (complete)="onCompleteSelected($event)"  
-        />
+        <app-card>
+          <app-task 
+            [task] = "task"
+            (complete)="onCompleteSelected($event)"  
+          />
+        </app-card>
       </li>
     }
   </ul> 
