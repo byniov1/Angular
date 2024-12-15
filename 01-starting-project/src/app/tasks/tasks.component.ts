@@ -17,35 +17,24 @@ export class TasksComponent {
 
   @Input() name?: string | undefined;
 
-  // private taskService = inject(TaskService);
+  private taskService = inject(TaskService);
 
   protected showAddTaskForm?: boolean = false;
-
-  protected tasks;
-
-  constructor(private taskService: TaskService){
-    this.tasks = this.taskService.tasks
-  }
 
   get selectedUserTasks(){  
     return this.taskService.getUserTask(this.userId);
   }
 
-  onCompleteSelected(id: string){
-    this.taskService.onRemoveTask(id)
-  }
-
   onAddTask(taskData: NewTaskData){
     this.taskService.onAddTask(taskData, this.userId);
-
     this.showAddTaskForm = false;
   }
 
-  onStartAddTask() {
-    this.showAddTaskForm = !this.showAddTaskForm;
-  }
-
-  onCancelAddTask(){
-    this.showAddTaskForm = false;
+  onManageForm(command: string){
+    if(command === 'close'){
+      this.showAddTaskForm = false;
+    } else {
+      this.showAddTaskForm = true;
+    }
   }
 } 
