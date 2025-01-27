@@ -1,18 +1,15 @@
-<div class="dashboard-item">
-    <article>
-        <!-- Classic inputs -->
-        <!-- <header>
-            <img [src]="image.src" [alt]="image.alt" />
-            <h2>Server Status</h2>
-        </header> -->
+<article>
+    <!-- Classic inputs -->
+    <!-- <header>
+        <img [src]="image.src" [alt]="image.alt" />
+        <h2>Server Status</h2>
+    </header> -->
+    
+    <!-- Singnal -->
+    <header>
+        <img [src]="image().src" [alt]="image().alt" />
+        <h2>{{ title() }}</h2>
+    </header>
+    <ng-content />
 
-        <!-- Singnal -->
-        <header>
-            <img [src]="image().src" [alt]="image().alt" />
-            <h2>{{ title() }}</h2>
-        </header>
-
-        <ng-content />
-
-    </article>
-</div>
+</article>
