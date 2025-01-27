@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 type Status = 'online' | 'offline' | 'unknown'
 
@@ -16,24 +16,16 @@ enum StatusEnum {
   styleUrl: './server-status.component.css',
 })
 
-export class ServerStatusComponent {
+export class ServerStatusComponent implements OnInit {
   protected currentStatus: Status = 'online';
 
-  constructor(){
+  
+  ngOnInit() {
     this.changeTime()
   }
 
   changeTime(){
-
     setInterval(() => {
-      // if(this.currentStatus === 'online'){
-      //   this.currentStatus = 'offline'
-      // } else if(this.currentStatus === 'offline') {
-      //   this.currentStatus = 'unknown'
-      // } else {
-      //   this.currentStatus = 'online'
-      // }
-
       const rnd = Math.random();
 
       if(rnd < 0.5){
@@ -43,7 +35,6 @@ export class ServerStatusComponent {
       } else {
         this.currentStatus = StatusEnum.Unknow
       }
-
     }, 5000)
   }
 }
