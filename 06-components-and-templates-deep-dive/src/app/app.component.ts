@@ -13,7 +13,8 @@ import { DashboardItemComponent } from "./dashboard/dashboard-item/dashboard-ite
     HeaderComponent,
     TrafficComponent,
     TicketsComponent,
-    DashboardItemComponent
+    DashboardItemComponent,
+    ServerStatusComponent
 ],
 })
 export class AppComponent {}

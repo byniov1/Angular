@@ -5,16 +5,22 @@
     <app-dashboard-item 
       title="Server Status"
       [image]="{src: 'status.png', alt: 'A signal symbol'}"
-    ></app-dashboard-item>
+    >
+    <app-server-status/>
+  </app-dashboard-item>
 
       <app-dashboard-item 
       title="Traffic"
       [image]="{src: 'globe.png', alt: 'A globe'}"
-    ></app-dashboard-item>
+    >
+    <app-traffic />
+  </app-dashboard-item>
 
     <app-dashboard-item 
     title="Support Tickets"
     [image]="{src: 'list.png', alt: 'A list of items'}"
-  ></app-dashboard-item>
+  >
+  <app-tickets />
+</app-dashboard-item>
   </div>
 </main>
