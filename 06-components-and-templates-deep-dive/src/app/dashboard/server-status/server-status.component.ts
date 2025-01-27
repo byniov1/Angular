@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 type Status = 'online' | 'offline' | 'unknown'
 
@@ -19,13 +20,18 @@ enum StatusEnum {
 export class ServerStatusComponent implements OnInit {
   protected currentStatus: Status = 'online';
 
-  
+  // private intervalSub?: NodeJS.Timeout
+  // private intervalId?: ReturnType<typeof setInterval>
+
+  private destroyRef = inject(DestroyRef);
+
   ngOnInit() {
     this.changeTime()
   }
 
   changeTime(){
-    setInterval(() => {
+    // this.intervalId = setInterval(() => {
+    const intrevalId = setInterval(() => {
       const rnd = Math.random();
 
       if(rnd < 0.5){
@@ -36,5 +42,13 @@ export class ServerStatusComponent implements OnInit {
         this.currentStatus = StatusEnum.Unknow
       }
     }, 5000)
+  
+    this.destroyRef.onDestroy(() => clearInterval(intrevalId))
   }
+
+  // ngOnDestroy(): void {
+  //   clearInterval(this.intervalId)
+  // }
+
+
 }
