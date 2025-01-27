@@ -31,15 +31,15 @@ export class ControlComponent {
   //   console.log('Clicked');
   // }
 
-  constructor() {
-    afterRender(() => {
-      console.log('afterRender');
-    });
+  // constructor() {
+  //   afterRender(() => {
+  //     console.log('afterRender');
+  //   });
 
-    afterNextRender(() => {
-      console.log('afterNextRender');
-    });
-  }
+  //   afterNextRender(() => {
+  //     console.log('afterNextRender');
+  //   });
+  // }
 
   label = input.required<string>();
 

@@ -24,7 +24,7 @@ enum StatusEnum {
   templateUrl: './server-status.component.html',
   styleUrl: './server-status.component.css',
 })
-export class ServerStatusComponent implements OnInit {
+export class ServerStatusComponent {
   // protected currentStatus: Status = 'online';
   currentStatus = signal<Status>('online');
 
@@ -33,19 +33,19 @@ export class ServerStatusComponent implements OnInit {
 
   private destroyRef = inject(DestroyRef);
 
-  ngOnInit() {
-    effect((onCleanup) => {
-      this.changeTime();
+  // ngOnInit() {
+  //   effect((onCleanup) => {
+  //     this.changeTime();
 
-      const timer = setTimeout(() => {
-        console.log('Something');
-      }, 1000);
+  //     const timer = setTimeout(() => {
+  //       console.log('Something');
+  //     }, 1000);
 
-      onCleanup(() => {
-        clearTimeout(timer);
-      });
-    });
-  }
+  //     onCleanup(() => {
+  //       clearTimeout(timer);
+  //     });
+  //   });
+  // }
 
   changeTime() {
     // this.intervalId = setInterval(() => {
