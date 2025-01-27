@@ -15,7 +15,7 @@ export class DashboardItemComponent {
   // }
   // @Input({required: true}) title!: string;
 
-  protected image = input.required<{src: string, alt: string}>();
-  protected title = input.required<string>();
+  image = input.required<{src: string, alt: string}>();
+  title = input.required<string>();
 
 }
