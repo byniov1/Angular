@@ -1,9 +1,9 @@
 <!-- <div [class.status] = "currentStatus === 'offline'"> -->
 <div [class] = "{
   status: true,
-  'staus-online': currentStatus === 'online',
-  'status-offline': currentStatus === 'offline',
-  'status-unknow': currentStatus === 'unknown'
+  'staus-online': currentStatus() === 'online',
+  'status-offline': currentStatus() === 'offline',
+  'status-unknow': currentStatus() === 'unknown'
 }"
   [style] = "{
     'font-size': '64px',
@@ -11,10 +11,10 @@
   }"
   [style.fontSize] = "'12px'"
 >
-  @if (currentStatus === 'online') {
+  @if (currentStatus() === 'online') {
     <p>Servers are online</p>
     <p>All systems are operational.</p>
-  } @else if (currentStatus === 'offline') {
+  } @else if (currentStatus() === 'offline') {
   <p>Servers are offline</p>
   <p>Functionality should be restored soon.</p>
   } @else {

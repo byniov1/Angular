@@ -1,4 +1,6 @@
 import {
+  afterNextRender,
+  afterRender,
   Component,
   contentChild,
   ContentChild,
@@ -28,6 +30,16 @@ export class ControlComponent {
   // @HostListener('click') onClick(){
   //   console.log('Clicked');
   // }
+
+  constructor() {
+    afterRender(() => {
+      console.log('afterRender');
+    });
+
+    afterNextRender(() => {
+      console.log('afterNextRender');
+    });
+  }
 
   label = input.required<string>();
 
