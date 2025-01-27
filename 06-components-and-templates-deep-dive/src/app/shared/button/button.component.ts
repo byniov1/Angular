@@ -8,5 +8,5 @@ import { Component, input } from '@angular/core';
   styleUrl: './button.component.css'
 })
 export class ButtonComponent {
-  public title = input<string>('Logout');
+  // public title = input<string>('Logout');
 }
