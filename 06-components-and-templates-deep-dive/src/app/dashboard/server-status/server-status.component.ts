@@ -1,6 +1,7 @@
 import {
   Component,
   DestroyRef,
+  effect,
   inject,
   OnDestroy,
   OnInit,
@@ -33,7 +34,17 @@ export class ServerStatusComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
 
   ngOnInit() {
-    this.changeTime();
+    effect((onCleanup) => {
+      this.changeTime();
+
+      const timer = setTimeout(() => {
+        console.log('Something');
+      }, 1000);
+
+      onCleanup(() => {
+        clearTimeout(timer);
+      });
+    });
   }
 
   changeTime() {
