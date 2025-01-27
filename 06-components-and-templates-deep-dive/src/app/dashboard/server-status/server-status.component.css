@@ -15,7 +15,7 @@
   }
   
   .status-offline p:first-of-type {
-    color: #b22084;
+    color: #b22084 !important;
   }
   
   .status-unknown p:first-of-type {
