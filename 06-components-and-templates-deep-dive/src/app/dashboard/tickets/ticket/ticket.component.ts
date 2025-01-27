@@ -9,11 +9,11 @@ import { Ticket } from './ticket.model';
   styleUrl: './ticket.component.css',
 })
 export class TicketComponent {
-  // public data = input.required<Ticket>();
-  public data = input<Ticket | null>(null, {
-    alias: 'ticket',
-    // transform: () => {},
-  });
+  public data = input.required<Ticket>();
+  // public data = input<Ticket | null>(null, {
+  //   // alias: 'ticket',
+  //   // transform: () => {},
+  // });
 
   public detailsVisible = signal(false);
 
