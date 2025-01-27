@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
-  selector: 'app-button',
+  selector: 'button[appButton]',
   standalone: true,
   imports: [],
   templateUrl: './button.component.html',
   styleUrl: './button.component.css'
 })
 export class ButtonComponent {
-
+  public title = input<string>('Logout');
 }
