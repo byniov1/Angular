@@ -5,6 +5,7 @@ type Temp = 'cel' | 'fah';
 @Pipe({
   name: 'temp',
   standalone: true,
+  pure: false,
 })
 export class TemperaturePipe implements PipeTransform {
   transform(value: string | number | null, inputType: Temp, outputType?: Temp) {
