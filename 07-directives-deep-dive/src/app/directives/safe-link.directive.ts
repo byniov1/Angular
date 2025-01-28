@@ -1,4 +1,4 @@
-import { Directive, input } from '@angular/core';
+import { Directive, ElementRef, inject, input } from '@angular/core';
 
 @Directive({
   selector: 'a[appSafeLink]',
@@ -12,6 +12,8 @@ export class SafeLinkDirective {
     alias: 'appSafeLink',
   });
 
+  private hostElementRef = inject<ElementRef<HTMLAnchorElement>>(ElementRef);
+
   constructor() {
     console.log('SafeLinkDirective is active');
   }
@@ -22,9 +24,12 @@ export class SafeLinkDirective {
     // console.log(address);
 
     if (wantsToLeave) {
-      const address = (event.target as HTMLAnchorElement).href;
+      // const address = (event.target as HTMLAnchorElement).href;
+      // (event.target as HTMLAnchorElement).href =
+      //   address + `?from=${this.queryParam()}`;
 
-      (event.target as HTMLAnchorElement).href =
+      const address = this.hostElementRef.nativeElement.href;
+      this.hostElementRef.nativeElement.href =
         address + `?from=${this.queryParam()}`;
 
       return;
