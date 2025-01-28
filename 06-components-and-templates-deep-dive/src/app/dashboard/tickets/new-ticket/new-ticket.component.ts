@@ -27,12 +27,21 @@ export class NewTicketComponent implements AfterViewInit {
   // @Output() add = new EventEmitter<{ title: string; text: string }>();
   add = output<{ title: string; text: string }>();
 
-  // onSubmit(titleElement: string, textElement: string, form: HTMLFormElement){
-  onSubmit(titleElement: string, textElement: string) {
-    console.dir(titleElement, textElement);
+  enteredTitle = '';
+  enteredText = '';
 
-    this.add.emit({ title: titleElement, text: textElement });
-    this.form()?.nativeElement.reset();
+  // onSubmit(titleElement: string, textElement: string, form: HTMLFormElement){
+  // onSubmit(titleElement: string, textElement: string) {
+  //   console.dir(titleElement, textElement);
+
+  //   this.add.emit({ title: titleElement, text: textElement });
+  //   this.form()?.nativeElement.reset();
+  // }
+
+  onSubmit() {
+    this.add.emit({ title: this.enteredTitle, text: this.enteredText });
+    this.enteredTitle = '';
+    this.enteredText = '';
   }
 
   ngAfterViewInit(): void {
