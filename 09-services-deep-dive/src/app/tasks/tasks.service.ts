@@ -1,5 +1,6 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Task, TaskStatus } from './task.model';
+import { LogginService } from '../loggin.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,8 @@ export class TasksService {
 
   public allTasks = this.tasks.asReadonly();
 
+  private logginService = inject(LogginService);
+
   addTask(taskData: { title: string; description: string }) {
     const newTask: Task = {
       ...taskData,
@@ -17,6 +20,7 @@ export class TasksService {
     };
 
     this.tasks.update((oldTasks) => [...oldTasks, newTask]);
+    this.logginService.log('ADDED TASK with title ' + taskData.title);
   }
 
   // updateTasksStatus(taskId: string, newStatus: TaskStatus) {
@@ -32,5 +36,7 @@ export class TasksService {
         return task;
       })
     );
+
+    this.logginService.log('CHANGE TASK STATUS to ' + newStatus);
   }
 }
